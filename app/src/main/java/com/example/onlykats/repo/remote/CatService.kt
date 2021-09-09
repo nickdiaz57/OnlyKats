@@ -13,6 +13,7 @@ interface CatService {
     suspend fun getCatImages(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
+        @Query("has_breeds") has_breeds: Boolean,
         @Query("order") order: Order
     ):Response<List<Cat>>
 }

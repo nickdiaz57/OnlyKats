@@ -5,6 +5,15 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/breed_display_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/iv_cat"/>
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_cat"
         android:layout_width="match_parent"
@@ -13,6 +22,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/breed_display_box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
