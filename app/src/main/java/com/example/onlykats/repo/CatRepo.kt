@@ -1,8 +1,8 @@
 package com.example.onlykats.repo
+
 import android.util.Log
 import com.example.onlykats.repo.remote.RetrofitInstance
 import com.example.onlykats.util.ApiState
-import com.example.onlykats.util.Order
 import kotlinx.coroutines.flow.flow
 
 object CatRepo {
@@ -10,10 +10,20 @@ object CatRepo {
     private val catService by lazy { RetrofitInstance.catService }
     const val NO_DATA_FOUND = "No data found"
 
-    fun getCatState(limit: Int, page: Int = 1, breeds: Boolean = false, order: Order = Order.RANDOM) = flow {
+    fun getCatState(limit: Int?, page: Int?, hasBreeds: Boolean?, order: String?, fileType: String?) = flow {
         emit(ApiState.Loading)
 
-        val catResponse = catService.getCatImages(limit, page, breeds, order)
+        val queryMap = listOfNotNull(
+            limit?.let { "limit" to it },
+            page?.let { "page" to it },
+            hasBreeds?.let { "has_breeds" to it },
+            order?.let { "order" to it },
+            fileType?.let{ "mime_types" to it }
+        ).toMap()
+
+        Log.e("Cat Repo", "getCatState called. map is $queryMap")
+
+        val catResponse = catService.getCatImages(queryMap)
 
         val state = if (catResponse.isSuccessful) {
             if (catResponse.body().isNullOrEmpty()) {

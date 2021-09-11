@@ -11,7 +11,7 @@
         android:id="@+id/settings_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings Fragment"
+        android:text="Settings"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,18 +21,19 @@
         android:id="@+id/apply_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/settings_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Apply Changes"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Apply New Amount"
-        android:textSize="20sp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings_text"
+        app:layout_constraintVertical_bias="0.654" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/slider_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cat Limit"
+        android:text="Number of Images"
         android:labelFor="@id/cat_amount_slider"
         android:textAppearance="?attr/textAppearanceHeadline5"
         app:layout_constraintTop_toBottomOf="@id/settings_text"
@@ -52,8 +53,84 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Has Breeds"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/apply_button" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/filetype_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="File Types"
+        app:layout_constraintTop_toBottomOf="@id/apply_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/png_checkbox"/>
+    <CheckBox
+        android:id="@+id/gif_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".GIF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/jpg_checkbox"/>
+    <CheckBox
+        android:id="@+id/jpg_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".JPG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gif_checkbox"
+        app:layout_constraintTop_toBottomOf="@id/png_checkbox"
+        />
+
+    <CheckBox
+        android:id="@+id/png_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".PNG"
+        app:layout_constraintBottom_toTopOf="@id/jpg_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filetype_label" />
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:labelFor="@id/filesize_selector"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/cat_amount_slider"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/filesize_selector"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:text="Image Size"-->
+<!--        android:textAppearance="?attr/textAppearanceHeadline5"/>-->
+
+<!--    <RadioGroup-->
+<!--        android:id="@+id/filesize_selector"-->
+<!--        android:checkedButton="@+id/radio_button_1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/cat_amount_slider"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/apply_button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/btn_thumb"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Thumbnail"/>-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/btn_small"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Small"/>-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/btn_med"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Medium"/>-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/btn_full"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Full"/>-->
+<!--    </RadioGroup>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

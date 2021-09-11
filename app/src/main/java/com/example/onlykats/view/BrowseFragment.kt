@@ -7,8 +7,6 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import com.example.onlykats.R
 import com.example.onlykats.databinding.FragmentBrowseBinding
 import com.example.onlykats.model.Cat
@@ -29,16 +27,11 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
         setupObservers()
     }
 
-    // with(receiver) is 1 of 5 scope functions
     private fun initViews() = with(binding) {
         rvCats.adapter = CatAdapter()
         scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            // on scroll change we are checking when users scroll as bottom.
             if (scrollY == (v as NestedScrollView).getChildAt(0).measuredHeight - v.getMeasuredHeight()) {
-                // in this method we are incrementing page number,
-                // making progress bar visible and calling get data method.
                 catViewModel.page++
-                // on below line we are making our progress bar visible.
                 binding.pbLoading.isVisible = true
             }
         }
@@ -53,7 +46,7 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
     }
 
     private fun handleSuccess(cats: List<Cat>) {
-        Log.e(TAG, "ApiState.Success: $cats")
+//        Log.e(TAG, "ApiState.Success: $cats")
         (binding.rvCats.adapter as CatAdapter).updateList(cats)
     }
 

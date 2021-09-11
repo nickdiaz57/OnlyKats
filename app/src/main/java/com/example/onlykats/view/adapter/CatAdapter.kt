@@ -27,7 +27,6 @@ class CatAdapter(
     override fun getItemCount() = catList.size
 
     fun updateList(cats: List<Cat>) {
-        Log.e("CatAdapter", "updateList called")
         catList.addAll(cats)
         notifyItemRangeChanged(0, catList.size)
     }
@@ -35,7 +34,6 @@ class CatAdapter(
     class CatViewHolder(private val binding: CatItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun loadCat(cat: Cat) = with(binding) {
-            Log.e("ViewHolder", "cat object is $cat")
             ivCat.loadWithGlide(cat.url)
 
             if (cat.breeds.isEmpty()) {

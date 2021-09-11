@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import com.example.onlykats.R
 import com.example.onlykats.databinding.FragmentSettingsBinding
 import com.example.onlykats.viewmodel.CatViewModel
@@ -29,15 +28,29 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             toggleApply(catViewModel.limit != value.toInt())
         }
 
+        breedToggle.isChecked = catViewModel.hasBreeds
         breedToggle.setOnCheckedChangeListener { _, isChecked ->
-//            if (isChecked == catViewModel.breeds) {
-//                catViewModel.breeds = isChecked
-//            }
-            catViewModel.breeds = isChecked
+            catViewModel.hasBreeds = isChecked
+            Log.e("Settings Fragment", "breeds is set to ${catViewModel.hasBreeds}")
         }
 
         applyButton.setOnClickListener{
             catViewModel.fetchCats(catAmountSlider.value.toInt())
+        }
+
+        pngCheckbox.isChecked = catViewModel.fileType.contains("png,")
+        pngCheckbox.setOnCheckedChangeListener{ _, _ ->
+            catViewModel.fileType = "png,"
+        }
+
+        jpgCheckbox.isChecked = catViewModel.fileType.contains("jpg,")
+        jpgCheckbox.setOnCheckedChangeListener{ _, _ ->
+            catViewModel.fileType = "jpg,"
+        }
+
+        gifCheckbox.isChecked = catViewModel.fileType.contains("gif,")
+        gifCheckbox.setOnCheckedChangeListener{ _, _ ->
+            catViewModel.fileType = "gif,"
         }
     }
 

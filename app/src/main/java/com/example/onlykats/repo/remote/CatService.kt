@@ -9,11 +9,5 @@ interface CatService {
 
     @Headers("x-api-key: 53ee5abe-4056-4fcc-b486-3c2af788d781")
     @GET("v1/images/search")
-
-    suspend fun getCatImages(
-        @Query("limit") limit: Int,
-        @Query("page") page: Int,
-        @Query("has_breeds") has_breeds: Boolean,
-        @Query("order") order: Order
-    ):Response<List<Cat>>
+    suspend fun getCatImages(@QueryMap options: Map<String, @JvmSuppressWildcards Any>):Response<List<Cat>>
 }
